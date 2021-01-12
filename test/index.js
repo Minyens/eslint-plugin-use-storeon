@@ -18,6 +18,12 @@ describe('eslint useStoreon plugin', function () {
       {
         code: `const { one, two, dispatch } = useStoreon('one', 'two')`
       },
+      {
+        code: `const { one, two: destructure, dispatch } = useStoreon('one', 'two')`
+      },
+      {
+        code: `const { one: five, two: destructure, dispatch } = useStoreon('one', 'two')`
+      }
     ],
 
     invalid: [
@@ -48,6 +54,14 @@ describe('eslint useStoreon plugin', function () {
           { message: 'useStoreon variables must have matching string passed in.', column: 19, endColumn: 24 }
         ]
       },
+      {
+        code: `const { one, two, three: destructure, dispatch } = useStoreon('one', 'two')`,
+        errors: [{ message: 'useStoreon variables must have matching string passed in.', column: 19, endColumn: 37 }]
+      },
+      {
+        code: `const { one, three: destructure, dispatch } = useStoreon('one', 'destructure')`,
+        errors: [{ message: 'useStoreon variables must have matching string passed in.', column: 14, endColumn: 32 }]
+      }
     ]
   })
 })

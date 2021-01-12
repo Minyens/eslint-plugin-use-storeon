@@ -8,7 +8,7 @@ module.exports = {
               const storeonArgs = { dispatch: true }
               node.arguments.forEach(n => { storeonArgs[n.value] = true })
               node.parent.id.properties.forEach(p => {
-                const { name } = p.value
+                const { name } = p.key
 
                 if (!storeonArgs[name]) {
                   context.report({

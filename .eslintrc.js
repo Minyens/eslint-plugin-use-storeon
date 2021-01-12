@@ -13,6 +13,6 @@ module.exports = {
     ecmaVersion: 12
   },
   rules: {
-    allowTemplateLiterals: true
+    quotes: 0
   }
 }
