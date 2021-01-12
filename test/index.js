@@ -60,7 +60,21 @@ describe('eslint useStoreon plugin', function () {
       },
       {
         code: `const { one, three: destructure, dispatch } = useStoreon('one', 'destructure')`,
-        errors: [{ message: 'useStoreon variables must have matching string passed in.', column: 14, endColumn: 32 }]
+        errors: [
+          { message: 'useStoreon variables must have matching string passed in.', column: 14, endColumn: 32 },
+          { message: 'useStoreon is watching an unused variable.', column: 65, endColumn: 78 }
+        ]
+      },
+      {
+        code: `const { one, two } = useStoreon('one', 'two', 'three')`,
+        errors: [{ message: 'useStoreon is watching an unused variable.', column: 47, endColumn: 54 }]
+      },
+      {
+        code: `const { dispatch } = useStoreon('one', 'two')`,
+        errors: [
+          { message: 'useStoreon is watching an unused variable.', column: 33, endColumn: 38 },
+          { message: 'useStoreon is watching an unused variable.', column: 40, endColumn: 45 }
+        ]
       }
     ]
   })
