@@ -3,8 +3,8 @@ const RuleTester = require('eslint').RuleTester
 
 const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 12 } })
 
-describe('eslint useStoreon plugin', function () {
-  ruleTester.run('use-storeon', rule.rules['use-storeon'], {
+describe('use-storeon/no-unwatched-vars', function () {
+  ruleTester.run('no-unwatched-vars', rule.rules['no-unwatched-vars'], {
     valid: [
       {
         code: `const { one, two, three } = useStoreon('one', 'two', 'three')`
@@ -59,21 +59,9 @@ describe('eslint useStoreon plugin', function () {
         errors: [{ message: 'useStoreon variables must have matching string passed in.', column: 19, endColumn: 37 }]
       },
       {
-        code: `const { one, three: destructure, dispatch } = useStoreon('one', 'destructure')`,
+        code: `const { one, three: destructure, dispatch } = useStoreon('one')`,
         errors: [
-          { message: 'useStoreon variables must have matching string passed in.', column: 14, endColumn: 32 },
-          { message: 'useStoreon is watching an unused variable.', column: 65, endColumn: 78 }
-        ]
-      },
-      {
-        code: `const { one, two } = useStoreon('one', 'two', 'three')`,
-        errors: [{ message: 'useStoreon is watching an unused variable.', column: 47, endColumn: 54 }]
-      },
-      {
-        code: `const { dispatch } = useStoreon('one', 'two')`,
-        errors: [
-          { message: 'useStoreon is watching an unused variable.', column: 33, endColumn: 38 },
-          { message: 'useStoreon is watching an unused variable.', column: 40, endColumn: 45 }
+          { message: 'useStoreon variables must have matching string passed in.', column: 14, endColumn: 32 }
         ]
       }
     ]

@@ -1,13 +1,24 @@
 # eslint-plugin-use-storeon
 
-An [ESlint](https://eslint.org/) rule for [Storeon](https://github.com/storeon/storeon) that lets you know when you're not watching a variable you're accessing from `useStoreon` and when you're watching a variable that isn't being accessed.
+[ESlint](https://eslint.org/) rules for [Storeon](https://github.com/storeon/storeon)
 
-# Usage
+## Rules
+`no-dupe-use-storeon` Fires when useStoreon is declared multiple times.
+`no-unused-watched-vars` Fires when you're accessing a variable from useStoreon that isn't being watched.
+`no-unwatched-vars` Fires when you're watching a variable that isn't being accessed.
+
+
+## Usage
 Configure your `.eslint.rc.*` file.
 
 ```
+{
   rules: {
-    "use-storeon/use-storeon": ["error"],
+    "use-storeon/no-dupe-use-storeon": ["error"],
+    "use-storeon/no-unused-watched-vars": ["error"],
+    "use-storeon/no-unwatched-vars": ["error"],
   },
   plugins: ["use-storeon"],
+  ...
+}
 ```

@@ -1,7 +1,21 @@
 {
   "name": "eslint-plugin-use-storeon",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Minyens/eslint-plugin-use-storeon"
+  },
+  "keywords": [
+    "lint",
+    "eslint",
+    "storeon",
+    "useStoreon"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Minyens/eslint-plugin-use-storeon/issues"
+  },
   "scripts": {
     "test": "mocha",
     "lint": "eslint ."
